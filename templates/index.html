@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Car Marketplace</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  
+</head>
+
+<body style="background: #000;">
+ <div>
+	<h1>PREDICT USED CAR PRICE</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+    <p>
+      <label>Please select month</label>
+        <select id = "month" name=month>
+          <option value = "may">May</option>
+          <option value = "april">April</option>
+          <option value = "march">March</option>
+        </select>
+    </p>
+    <p>
+      <label>Transmission</label>
+        <select id = "trans" name=trans>
+          <option value = "1">Automatic</option>
+          <option value = "0">Manual</option>
+        </select>
+    </p>
+    <p>
+      <label>Origin</label>
+        <select id = "origin" name=origin>
+          <option value = "1">Foreign</option>
+          <option value = "0">Local</option>
+        </select>
+    </p>
+    
+    <p>
+      <label>Engine Type</label>
+        <select id = "engine" name=engine>
+          <option value = "1">Petrol</option>
+          <option value = "0">Diesel</option>
+        </select>
+    </p>
+
+
+    <p>
+      <label>Slide to select year</label>
+      <input type="range" min="2000" max="2020" name = "year" value="50" class="slider" id="myRange">
+      <a>Value: <span id="demo"></span></a>
+    <script>
+    var slider = document.getElementById("myRange");
+    var output = document.getElementById("demo");
+    output.innerHTML = slider.value;
+    
+    slider.oninput = function() {
+      output.innerHTML = this.value;
+    }
+    </script>
+    </p>   
+
+    <p>
+      <label>Brand</label>
+        <select id = "brand" name=brand>
+          <option value = "toyota">Toyota</option>
+          <option value = "honda">Honda</option>
+          <option value = "lexus">Lexus</option>
+          <option value = "mercedes-benz">Mercedes-Benz</option>
+          <option value = "volkswagen">Volkswagen</option>
+        </select>
+    </p>
+    <p>
+      <label>Model</label>
+        <select id = "model" name=model>
+          <option value = "avensis 2.4 exclusive automatic">Toyota Avensis 2.4</option> 
+          <option value = "avensis verso">Toyota Avensis Verso</option> 
+          <option value = "camry">Toyota Camry</option> 
+          <option value = "camry 2.4 se automatic">Toyota Camry 2.4 se</option>
+          <option value = "corolla">Toyota Corolla</option>
+          <option value = "corolla automatic">Toyota Corolla auto</option>
+          <option value = "corolla le 4-speed automatic">Toyota Corolla 4-speed</option>
+          <option value = "corolla le automatic">Toyota Corolla 4</option>
+          <option value = "hiace">Toyota Haice</option>
+          <option value = "highlander limited v6 4x4">Toyota Highlander</option>
+          <option value = "matrix">Toyota Matrix</option>
+          <option value = "rav4">Toyota RAV4</option>
+          <option value = "rav4 4wd">Toyota RAV4 4wd</option>
+          <option value = "rav4 limited">Toyota RAV4 Limited</option>
+          <option value = "sienna">Toyota Sienna</option>
+          <option value = "venza">Toyota Venza</option>
+          <option value = "accord coupe ex-l v-6 automatic">Honda Accord</option>
+          <option value = "cr-v">Honda cr-v</option>
+          <option value = "es 330">Lexus es 330</option>
+          <option value = "es 350">Lexus es 350</option>
+          <option value = "gx 470 sport utility">Lexus gx 470</option>
+          <option value = "rx">Lexus rx</option>
+          <option value = "rx 330 4wd">Lexus rx 330 4wd</option>
+          <option value = "c350">Mercedes-Benz c350</option>
+          <option value = "e350">Mercedes-Benz e350</option>
+          <option value = "glk 350">Mercedes-Benz glk 350</option>
+          <option value = "lt">Volkswagen lt</option>
+        </select>
+    </p>
+
+
+
+    <button type="submit" class="btn btn-primary btn-block btn-large">Predict sales in third month</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>
