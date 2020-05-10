@@ -9,7 +9,7 @@ warnings.filterwarnings('ignore')
 import seaborn as sns
 import pickle
 import pandas_profiling as pdp
-%matplotlib inline
+#%matplotlib inline
 
 
 #load data
